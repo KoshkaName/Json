@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Basket implements Serializable {
 
@@ -37,44 +35,44 @@ public class Basket implements Serializable {
     }
 
 
-//    public void saveTxt(File file) {
-//        try (FileWriter writer = new FileWriter(file, false)) {
-//            for (String product : products) {
-//                writer.write(product + " ");
-//            }
-//            writer.write("\n");
-//            for (int price : prices) {
-//                writer.write(price + " ");
-//            }
-//            writer.write("\n");
-//            for (int cart : carts) {
-//                writer.write(cart + " ");
-//            }
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
-//    public static Basket loadFromTxtFile(File textFile) {
-//        try (BufferedReader reader = new BufferedReader(new FileReader(textFile))) {
-//            String[] products = reader.readLine().split(" ");
-//
-//            String[] pricesStr = reader.readLine().split(" ");
-//            int[] prices = new int[pricesStr.length];
-//            for (int i = 0; i < pricesStr.length; i++) {
-//                prices[i] = Integer.parseInt(pricesStr[i]);
-//            }
-//
-//            Basket basket = new Basket(products, prices);
-//            String[] cartStr = reader.readLine().split(" ");
-//            for (int i = 0; i < cartStr.length; i++) {
-//                basket.carts[i] = Integer.parseInt(cartStr[i]);
-//            }
-//            return basket;
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return null;
-//    }
+    public void saveTxt(File file) {
+       try (FileWriter writer = new FileWriter(file, false)) {
+            for (String product : products) {
+                writer.write(product + " ");
+            }
+            writer.write("\n");
+            for (int price : prices) {
+               writer.write(price + " ");
+            }
+            writer.write("\n");
+            for (int cart : carts) {
+                writer.write(cart + " ");
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public static Basket loadFromTxtFile(File textFile) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(textFile))) {
+            String[] products = reader.readLine().split(" ");
+
+            String[] pricesStr = reader.readLine().split(" ");
+            int[] prices = new int[pricesStr.length];
+            for (int i = 0; i < pricesStr.length; i++) {
+                prices[i] = Integer.parseInt(pricesStr[i]);
+            }
+
+            Basket basket = new Basket(products, prices);
+            String[] cartStr = reader.readLine().split(" ");
+            for (int i = 0; i < cartStr.length; i++) {
+                basket.carts[i] = Integer.parseInt(cartStr[i]);
+            }
+            return basket;
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 public static void saveJson(File fileJson, Basket basket) {
     GsonBuilder builder = new GsonBuilder();
     Gson gson = builder.create();

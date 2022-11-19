@@ -10,10 +10,13 @@ public class Main {
         String[] products = {"Хлеб", "Яблоки", "Молоко"};
         int[] prices = {100, 200, 300};
         Basket basket = new Basket(products, prices);
-        File file = new File("basket.txt");
 
-        if (file.exists()) {
-            basket = Basket.loadFromTxtFile(file);
+        ClientLog clientLog = new ClientLog();
+        File fileCsv = new File("log.csv");
+        File fileJson = new File("basket.json");
+
+        if (fileJson.exists()) {
+            basket = Basket.loadFromJsonFile(fileJson);
             System.out.println("Корзина с покупками восстановлена из файла");
             basket.printCart();
         } else {
@@ -35,8 +38,12 @@ public class Main {
             int productNum = Integer.parseInt(parts[0]) - 1;
             int amount = Integer.parseInt(parts[1]);
             basket.addToCart(productNum, amount);
-            basket.saveTxt(file);
+            //basket.saveTxt(file);
+            clientLog.log(productNum, amount);
         }
+        //basket.printCart();
+        Basket.saveJson(fileJson, basket);
+        clientLog.exportCSV(fileCsv);
         basket.printCart();
 
     }

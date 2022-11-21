@@ -21,6 +21,7 @@ public class Main {
     public static String saveToFileFormat;
     public static boolean saveLog;
     public static String saveLogFileName;
+
     public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
         Scanner scanner = new Scanner(System.in);
         String[] products = {"Хлеб", "Яблоки", "Молоко"};
@@ -54,8 +55,8 @@ public class Main {
             } else {
                 System.out.println("Сохраненной корзины с покупками нет");
             }
-            } else {
-                System.out.println("Сохраненной корзины с покупками нет");
+        } else {
+            System.out.println("Сохраненной корзины с покупками нет");
         }
 
         System.out.println("Список возможных товаров для покупки");
@@ -90,9 +91,10 @@ public class Main {
         }
         basket.printCart();
     }
+
     public static void readConfigFromXml(Node config) {
         NodeList nodeList = config.getChildNodes();
-        for (int i = 0; i < nodeList.getLength(); i++ ) {
+        for (int i = 0; i < nodeList.getLength(); i++) {
             Node node = nodeList.item(i);
             if (Node.ELEMENT_NODE == node.getNodeType()) {
                 Element element = (Element) node;

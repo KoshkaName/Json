@@ -37,7 +37,7 @@ public class Basket implements Serializable {
     }
 
 
-    public static void saveTxt(File file) {
+    public void saveTxt(File file) {
         try (FileWriter writer = new FileWriter(file, false)) {
             for (String product : products) {
                 writer.write(product + " ");
@@ -77,8 +77,7 @@ public class Basket implements Serializable {
         return null;
     }
 
-    public static void saveJson(File fileJson, Basket basket) {
-
+    public void saveJson(File fileJson, Basket basket) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         try (FileWriter writer = new FileWriter(fileJson)) {

@@ -81,7 +81,7 @@ public class Main {
         }
         if (saveBasket) {
             if (saveToFileFormat.equals("json")) {
-                Basket.saveJson(fileSave, basket);
+                basket.saveJson(fileSave, basket);
             } else if (saveToFileFormat.equals("txt")) {
                 basket.saveTxt(fileSave);
             }
